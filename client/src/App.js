@@ -1,10 +1,17 @@
-import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Expenses from "./pages/Expenses";
+import PrivateRoute from "./routes/PrivateRoute";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<PrivateRoute><Expenses /></PrivateRoute>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
