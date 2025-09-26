@@ -7,6 +7,9 @@ export const addExpense = async (req, res) => {
     if (!title || !amount || !date)
       return res.status(400).json({ message: "Title, amount and date are required" });
 
+    if (amount <= 0)
+      return res.status(400).json({ message: "Amount must be greater than 0" });
+
     const expense = await Expense.create({
       title,
       amount,
